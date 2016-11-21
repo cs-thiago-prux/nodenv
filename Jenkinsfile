@@ -15,9 +15,11 @@ stage('old') {
 
 
 stage('new') {
-def nodeHome = tool name: '7-1-0', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+	def nodeHome = tool name: '7-1-0', type: 'jenkins.plugins.nodejs.tools.NodeJSInstallation'
+	env.PATH = "${nodeHome}/bin:${env.PATH}"
 
-sh '${nodeHome}/bin/node app.js'
+
+	sh 'node app.js'
 
 
 }
